@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1d5fa8">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>تعلّم تاشلحيت</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Noto+Sans+Tifinagh&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6eedd;--card:#fffdf8;--ink:#1f2a44;--mute:#6b7285;--blue:#1d5fa8;--gold:#d99a1e;--green:#2e8b57;--red:#c4413b;--line:#e6d9bb;--pat:#d99a1e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1626;--card:#1a2338;--ink:#f1ede2;--mute:#9aa3b8;--blue:#6aa8ee;--gold:#f0b84a;--green:#55c58a;--red:#ef7b74;--line:#2a3550;--pat:#f0b84a}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;color:var(--ink);font-family:'Cairo',system-ui,sans-serif}
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cpath d='M32 4 60 32 32 60 4 32Z' fill='none' stroke='%23d99a1e' stroke-opacity='.22' stroke-width='2'/%3E%3Cpath d='M32 20 44 32 32 44 20 32Z' fill='%231d5fa8' fill-opacity='.08'/%3E%3Ccircle cx='32' cy='32' r='2.5' fill='%23c4413b' fill-opacity='.35'/%3E%3C/svg%3E");background-attachment:fixed}
+.wrap{max-width:520px;margin:0 auto;padding:0 16px 96px}
+.hero{margin:0 -16px 16px;padding:22px 16px 20px;text-align:center;color:#fff;background:linear-gradient(135deg,#1d5fa8 0%,#2e8b57 60%,#d99a1e 100%);border-radius:0 0 28px 28px;box-shadow:0 8px 24px rgba(29,95,168,.25);position:relative;overflow:hidden}
+.hero:before{content:"ⵣ";font-family:'Noto Sans Tifinagh',sans-serif;position:absolute;left:-10px;top:-30px;font-size:150px;color:rgba(255,255,255,.12);direction:ltr}
+.hero h1{margin:0;font-size:28px;font-weight:900}
+.hero p{margin:4px 0 0;font-size:14px;opacity:.92}
+.view{display:none}.view.on{display:block}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;margin-bottom:6px}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;padding:7px 16px;font:inherit;font-size:14px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.chip.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.flash{background:var(--card);border:2px solid var(--line);border-radius:26px;min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;cursor:pointer;width:100%;font:inherit;color:inherit;box-shadow:0 10px 28px rgba(31,42,68,.12);animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.95);opacity:.5}to{transform:scale(1);opacity:1}}
+.flash .w{font-size:54px;font-weight:900;color:var(--blue);line-height:1.3}
+.flash .p{margin-top:6px;font-size:26px;font-weight:700;color:var(--gold)}
+.flash .p small{display:block;font-size:12px;font-weight:400;color:var(--mute)}
+.flash .l{font-size:19px;direction:ltr;margin-top:8px;color:var(--mute)}
+.flash .m{font-size:36px;font-weight:900;color:var(--green)}
+.flash .hint{color:var(--mute);font-size:13px;margin-top:16px}
+.row{display:flex;gap:10px;margin-top:14px}
+.btn{flex:1;border:0;border-radius:16px;padding:13px 6px;font:inherit;font-weight:700;font-size:15px;background:var(--blue);color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(29,95,168,.28)}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.slow{background:var(--green);box-shadow:0 4px 12px rgba(46,139,87,.28)}
+.count{color:var(--mute);font-size:14px;text-align:center;margin-top:10px}
+.note{color:var(--mute);font-size:13px;text-align:center;margin-top:12px}
+.q{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:22px;text-align:center;margin-bottom:12px;box-shadow:0 8px 22px rgba(31,42,68,.1)}
+.q .w{font-size:46px;font-weight:900;color:var(--blue)}
+.q .p{color:var(--gold);font-size:22px;font-weight:700}
+.q .l{direction:ltr;color:var(--mute)}
+.opt{display:block;width:100%;margin-bottom:10px;padding:14px;border-radius:16px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:18px;cursor:pointer}
+.opt.ok{background:var(--green);color:#fff;border-color:var(--green)}
+.opt.no{background:var(--red);color:#fff;border-color:var(--red)}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--green));width:0;transition:width .3s}
+.score{text-align:center;padding:30px 10px}.score b{font-size:60px;color:var(--gold)}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:center;box-shadow:0 4px 12px rgba(31,42,68,.06)}
+.tip .a{font-size:30px;font-weight:900;color:var(--blue);min-width:70px;text-align:center}
+.tip small{color:var(--mute);direction:ltr;display:block}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -6px 18px rgba(0,0,0,.06)}
+nav div{display:flex;width:100%;max-width:520px}
+nav button{flex:1;border:0;background:none;color:var(--mute);font:inherit;font-size:13px;padding:10px 0 8px;cursor:pointer}
+nav button b{display:block;font-size:20px}
+nav button.on{color:var(--blue);font-weight:700}
+</style>
+</head>
+<body><div class="wrap">
+<div class="hero"><h1>تعلّم تاشلحيت</h1><p>الأمازيغية السوسية · كتابة ونطق بالعربية</p></div>
+
+<section id="v-words" class="view on">
+  <div class="chips" id="chips"></div>
+  <button class="flash" id="flash"></button>
+  <div class="row"><button class="btn alt" id="next">التالي ›</button><button class="btn" id="say">🔊 استمع</button><button class="btn slow" id="slow">🐢 ببطء</button><button class="btn alt" id="prev">‹ السابق</button></div>
+  <div class="count" id="cnt"></div>
+  <div class="note" id="vnote">الصوت نطق تقريبي بصوت عربي من جهازك</div>
+</section>
+
+<section id="v-quiz" class="view"><div id="quiz"></div></section>
+
+<section id="v-tips" class="view">
+  <div class="tip"><div class="a">گ</div><div>تُكتب بها <b>g</b><small>أَرْگَازْ = argaz</small></div></div>
+  <div class="tip"><div class="a">ّ</div><div>الشدّة تعني حرفاً مكرراً<small>سْمُّوسْ = smmus</small></div></div>
+  <div class="tip"><div class="a">ض ص ط</div><div>حروف مفخّمة <b>ḍ ṣ ṭ</b><small>كْرَاضْ = kraḍ</small></div></div>
+  <div class="tip"><div class="a">خ غ</div><div>تُكتب <b>x</b> و <b>ɣ</b><small>أَغْرُومْ = aɣrum</small></div></div>
+  <div class="tip"><div class="a">ْ</div><div>السكون كثير في تاشلحيت: كلمات بلا حركة بين الحروف<small>تَانْمِيرْت = tanmirt</small></div></div>
+  <div class="tip"><div class="a">أ إ و</div><div>أ = a ، إ/ي = i ، و = u</div></div>
+  <div class="note">لا يوجد إملاء عربي موحّد لتاشلحيت، فقد تجد اختلافات بين المصادر.</div>
+</section>
+
+<nav><div>
+  <button data-v="words" class="on"><b>📖</b>الكلمات</button>
+  <button data-v="quiz"><b>🎯</b>اختبار</button>
+  <button data-v="tips"><b>✍️</b>الكتابة</button>
+</div></nav>
+</div>
+<script>
+var W=[
+["تحيات","أزول","azul","مرحبا","أَزُول"],["تحيات","أزول فلاون","azul fellawn","السلام عليكم","أَزُول فَلَّاوْن"],["تحيات","مانزاكين؟","manzakin?","كيف حالك؟","مَانْزَاكِين؟"],["تحيات","تانميرت","tanmirt","شكرا","تَانْمِيرْت"],["تحيات","تانميرت بزّاف","tanmirt bzzaf","شكرا جزيلا","تَانْمِيرْت بْزَّاف"],["تحيات","إسم إينو ...","ism inu ...","اسمي ...","إِسْمْ إِينُو"],["تحيات","أر تُفات","ar tufat","إلى الغد","أَرْ تُفَات"],
+["عبارات","واه","wah","نعم","وَاهْ"],["عبارات","أوهو","uhu","لا","أُوهُو"],["عبارات","أور فهمخ","ur fhimx","لا أفهم","أُورْ فْهِمْخْ"],["عبارات","ماني؟","mani?","أين؟","مَانِي؟"],["عبارات","بزّاف","bzzaf","كثير","بْزَّاف"],["عبارات","شويّة","chwiya","قليل","شْوِيَّة"],
+["أعداد","يان","yan","واحد","يَانْ"],["أعداد","سين","sin","اثنان","سِينْ"],["أعداد","كراض","kraḍ","ثلاثة","كْرَاضْ"],["أعداد","كّوز","kkuẓ","أربعة","كُّوزْ"],["أعداد","سمّوس","smmus","خمسة","سْمُّوسْ"],["أعداد","سديس","sḍis","ستة","سْدِيسْ"],["أعداد","سا","sa","سبعة","سَا"],["أعداد","تام","tam","ثمانية","تَامْ"],["أعداد","تزا","tẓa","تسعة","تْزَا"],["أعداد","مراو","mraw","عشرة","مْرَاوْ"],
+["طبيعة","أمان","aman","ماء","أَمَانْ"],["طبيعة","أدرار","adrar","جبل","أَدْرَارْ"],["طبيعة","أسيف","asif","نهر","أَسِيفْ"],["طبيعة","تافوكت","tafukt","شمس","تَافُوكْتْ"],["طبيعة","أيّور","ayyur","قمر","أَيُّورْ"],["طبيعة","أسّا","assa","اليوم","أَسَّا"],["طبيعة","تُفات","tufat","غدا","تُفَاتْ"],["طبيعة","إيض","iḍ","ليل","إِيضْ"],["طبيعة","تامدّيت","tameddit","مساء","تَامْدِّيتْ"],
+["حياة","أغروم","aɣrum","خبز","أَغْرُومْ"],["حياة","أتاي","atay","شاي","أَتَايْ"],["حياة","تيگمّي","tigmmi","بيت","تِيگْمِّي"],["حياة","أرگاز","argaz","رجل","أَرْگَازْ"],["حياة","تامغارت","tamɣart","امرأة","تَامْغَارْتْ"],["حياة","أغيول","aɣyul","حمار","أَغْيُولْ"],
+["عائلة","بابا","baba","أبي","بَابَا"],["عائلة","إمّا","imma","أمي","إِمَّا"],["عائلة","أگما","gma","أخي","أَگْمَا"],["عائلة","أولتما","ultma","أختي","أُولْتْمَا"],
+["جسم","إيخف","ixf","رأس","إِيخْفْ"],["جسم","تيت","titt","عين","تِيتْ"],["جسم","إيمي","imi","فم","إِيمِي"],["جسم","أفوس","afus","يد","أَفُوسْ"],["جسم","أول","ul","قلب","أُولْ"]];
+var $=function(i){return document.getElementById(i)};
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+
+document.querySelectorAll('nav button').forEach(function(b){b.onclick=function(){
+  document.querySelectorAll('nav button').forEach(function(x){x.classList.toggle('on',x===b)});
+  document.querySelectorAll('.view').forEach(function(s){s.classList.toggle('on',s.id==='v-'+b.dataset.v)});
+  if(b.dataset.v==='quiz')startQuiz();}});
+
+function speak(t,rate){try{var s=window.speechSynthesis;s.cancel();var u=new SpeechSynthesisUtterance(t.replace('...',''));
+  var v=s.getVoices().filter(function(x){return x.lang&&x.lang.toLowerCase().indexOf('ar')===0})[0];
+  if(v){u.voice=v;u.lang=v.lang}else{u.lang='ar-SA';$('vnote').textContent='إن لم يعمل الصوت: ثبّت صوتاً عربياً من إعدادات الهاتف (تحويل النص إلى كلام)'}
+  u.rate=rate;s.speak(u)}catch(e){$('vnote').textContent='متصفحك لا يدعم الصوت'}}
+try{speechSynthesis.getVoices()}catch(e){}
+
+var cats=['الكل'].concat(W.map(function(w){return w[0]}).filter(function(v,i,a){return a.indexOf(v)===i}));
+var cat='الكل',idx=0,flip=false,list=W;
+function pick(){list=cat==='الكل'?W:W.filter(function(w){return w[0]===cat});idx=0;flip=false;draw()}
+function draw(){var w=list[idx];var f=$('flash');f.style.animation='none';void f.offsetWidth;f.style.animation='';
+  f.innerHTML=flip?'<div class="m">'+w[3]+'</div><div class="p">'+w[4]+'</div><div class="l">'+w[2]+'</div>':'<div class="w">'+w[1]+'</div><div class="p"><small>النطق</small>'+w[4]+'</div><div class="l">'+w[2]+'</div><div class="hint">اضغط لمعرفة المعنى</div>';
+  $('cnt').textContent=(idx+1)+' / '+list.length}
+$('chips').innerHTML=cats.map(function(c){return '<button class="chip'+(c===cat?' on':'')+'">'+c+'</button>'}).join('');
+$('chips').onclick=function(e){if(e.target.className.indexOf('chip')<0)return;cat=e.target.textContent;
+  [].forEach.call($('chips').children,function(c){c.classList.toggle('on',c.textContent===cat)});pick()};
+$('flash').onclick=function(){flip=!flip;draw()};
+$('next').onclick=function(){idx=(idx+1)%list.length;flip=false;draw()};
+$('prev').onclick=function(){idx=(idx-1+list.length)%list.length;flip=false;draw()};
+$('say').onclick=function(){speak(list[idx][4],.85)};
+$('slow').onclick=function(){speak(list[idx][4],.5)};
+pick();
+
+var qs,qi,sc;
+function startQuiz(){qs=shuffle(W).slice(0,10);qi=0;sc=0;ask()}
+function ask(){
+  if(qi>=qs.length){var best=parseInt(store('best')||'0',10);if(sc>best){best=sc;store('best',String(sc))}
+    $('quiz').innerHTML='<div class="score"><b>'+sc+' / '+qs.length+'</b><p>'+(sc>=8?'ممتاز! 🌟':sc>=5?'جيد، واصل التدرب 👏':'لا بأس، راجع الكلمات وأعد المحاولة 💪')+'</p><p style="color:var(--mute)">أفضل نتيجة: '+best+'</p></div><button class="btn" id="again" style="width:100%">إعادة الاختبار</button>';
+    $('again').onclick=startQuiz;return}
+  var q=qs[qi];var opts=shuffle([q].concat(shuffle(W.filter(function(w){return w[3]!==q[3]})).slice(0,3)));
+  $('quiz').innerHTML='<div class="bar"><i style="width:'+(qi/qs.length*100)+'%"></i></div><div class="q"><div class="w">'+q[1]+'</div><div class="p">'+q[4]+'</div><div class="l">'+q[2]+'</div></div>'+opts.map(function(o){return '<button class="opt" data-m="'+o[3]+'">'+o[3]+'</button>'}).join('');
+  var done=false;
+  [].forEach.call($('quiz').querySelectorAll('.opt'),function(b){b.onclick=function(){if(done)return;done=true;
+    var ok=b.dataset.m===q[3];if(ok)sc++;b.classList.add(ok?'ok':'no');
+    if(!ok)[].forEach.call($('quiz').querySelectorAll('.opt'),function(x){if(x.dataset.m===q[3])x.classList.add('ok')});
+    setTimeout(function(){qi++;ask()},900)}})}
+
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+</script>
+</body>
+</html>
